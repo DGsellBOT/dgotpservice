@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SMSProvider</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Same styles as login.html */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .auth-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo h1 {
+            color: #667eea;
+            font-size: 28px;
+        }
+        
+        .auth-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .password-requirements {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .auth-btn {
+            background: #667eea;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .auth-btn:hover {
+            background: #5a67d8;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .auth-links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .terms-checkbox {
+            margin: 15px 0;
+        }
+        
+        .terms-checkbox label {
+            font-size: 14px;
+        }
+        
+        .terms-checkbox a {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <h1><i class="fas fa-sms"></i> SMSProvider</h1>
+                <p>Create your account</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+            
+            <form class="auth-form" id="signupForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePassword('password')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                
+                <div class="password-container">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+                
+                <div class="password-requirements">
+                    Password must be at least 8 characters with numbers and letters
+                </div>
+                
+                <div class="terms-checkbox">
+                    <label>
+                        <input type="checkbox" id="agreeTerms" required>
+                        I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="auth-btn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+                <p><a href="index.html">← Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/auth.js"></script>
+    
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
