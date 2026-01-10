@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - SMSProvider</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-sms"></i>
+                <span>SMS<span class="logo-highlight">Provider</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="pricing.html" class="dashboard-btn active">Pricing</a>
+                <a href="api.html">API Docs</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="#" class="btn-login">Login</a>
+                <a href="#" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="hero" style="padding: 150px 0 80px;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Simple, Transparent Pricing</h1>
+                <p class="subtitle">Choose the perfect plan for your needs. No hidden fees, no surprises.</p>
+                <div class="pricing-toggle">
+                    <span>Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricingToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Yearly <span class="discount-badge">Save 20%</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-cards">
+                <!-- Starter Plan -->
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <p>For individual developers & testing</p>
+                    <div class="price monthly">₹499<span>/month</span></div>
+                    <div class="price yearly" style="display: none;">₹399<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 100 OTPs included</li>
+                        <li><i class="fas fa-check"></i> India Numbers Only</li>
+                        <li><i class="fas fa-check"></i> Email Support</li>
+                        <li><i class="fas fa-check"></i> Basic Dashboard</li>
+                        <li><i class="fas fa-times"></i> No API Access</li>
+                        <li><i class="fas fa-times"></i> No Webhook Support</li>
+                    </ul>
+                    <a href="#signup" class="btn-price">Get Started</a>
+                </div>
+
+                <!-- Developer Plan -->
+                <div class="price-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Developer</h3>
+                    <p>For growing applications</p>
+                    <div class="price monthly">₹1,499<span>/month</span></div>
+                    <div class="price yearly" style="display: none;">₹1,199<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 1,000 OTPs included</li>
+                        <li><i class="fas fa-check"></i> 10+ Countries</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> Full API Access</li>
+                        <li><i class="fas fa-check"></i> Webhook Support</li>
+                        <li><i class="fas fa-check"></i> 99.9% Uptime SLA</li>
+                    </ul>
+                    <a href="#signup" class="btn-price">Choose Plan</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="price-card">
+                    <h3>Enterprise</h3>
+                    <p>For large scale businesses</p>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Unlimited OTPs</li>
+                        <li><i class="fas fa-check"></i> 50+ Countries</li>
+                        <li><i class="fas fa-check"></i> 24/7 Phone Support</li>
+                        <li><i class="fas fa-check"></i> Custom API Solutions</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                        <li><i class="fas fa-check"></i> Custom Integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn-price">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pay-As-You-Go -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Pay-As-You-Go Rates</h2>
+            <div class="rates-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>India</th>
+                            <th>USA</th>
+                            <th>UK</th>
+                            <th>Indonesia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WhatsApp OTP</td>
+                            <td>₹5/OTP</td>
+                            <td>$0.10/OTP</td>
+                            <td>£0.08/OTP</td>
+                            <td>Rp 1,500/OTP</td>
+                        </tr>
+                        <tr>
+                            <td>Google OTP</td>
+                            <td>₹4/OTP</td>
+                            <td>$0.08/OTP</td>
+                            <td>£0.06/OTP</td>
+                            <td>Rp 1,200/OTP</td>
+                        </tr>
+                        <tr>
+                            <td>Telegram OTP</td>
+                            <td>₹6/OTP</td>
+                            <td>$0.12/OTP</td>
+                            <td>£0.10/OTP</td>
+                            <td>Rp 1,800/OTP</td>
+                        </tr>
+                        <tr>
+                            <td>Facebook OTP</td>
+                            <td>₹7/OTP</td>
+                            <td>$0.14/OTP</td>
+                            <td>£0.12/OTP</td>
+                            <td>Rp 2,100/OTP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pricing" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a free trial?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All new users get ₹100 free credit to test our services.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I change plans later?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can upgrade or downgrade your plan anytime.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Credit/Debit Cards, UPI, Net Banking, PayPal, and Crypto.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do unused OTPs roll over?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, unused OTPs roll over to the next month for paid plans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="api-section">
+        <div class="container">
+            <div class="cta-final">
+                <h2>Ready to Get Started?</h2>
+                <p>Join thousands of developers using our virtual number services.</p>
+                <div class="cta-buttons">
+                    <a href="#signup" class="btn-primary">Sign Up Free</a>
+                    <a href="#contact" class="btn-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SMSProvider</h3>
+                    <p>Transparent pricing for all your virtual number needs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Pricing</h3>
+                    <a href="#plans">Plans</a>
+                    <a href="#rates">Rates</a>
+                    <a href="#calculator">Calculator</a>
+                    <a href="#refund">Refund Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Billing Support</h3>
+                    <p><i class="fas fa-envelope"></i> billing@smsprovider.com</p>
+                    <p><i class="fas fa-phone"></i> +91 1800-XXX-XXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SMSProvider Pricing. All prices in INR.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Pricing toggle
+        const pricingToggle = document.getElementById('pricingToggle');
+        const monthlyPrices = document.querySelectorAll('.price.monthly');
+        const yearlyPrices = document.querySelectorAll('.price.yearly');
+        
+        if (pricingToggle) {
+            pricingToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    monthlyPrices.forEach(p => p.style.display = 'none');
+                    yearlyPrices.forEach(p => p.style.display = 'block');
+                } else {
+                    monthlyPrices.forEach(p => p.style.display = 'block');
+                    yearlyPrices.forEach(p => p.style.display = 'none');
+                }
+            });
+        }
+        
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+        
+        // Add some CSS for FAQ
+        const style = document.createElement('style');
+        style.textContent = `
+            .pricing-toggle {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin: 30px 0;
+                justify-content: center;
+            }
+            
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 30px;
+            }
+            
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                transition: .4s;
+                border-radius: 34px;
+            }
+            
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 22px;
+                width: 22px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: .4s;
+                border-radius: 50%;
+            }
+            
+            input:checked + .slider {
+                background-color: #2563eb;
+            }
+            
+            input:checked + .slider:before {
+                transform: translateX(30px);
+            }
+            
+            .discount-badge {
+                background: #10b981;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 10px;
+                font-size: 12px;
+                margin-left: 5px;
+            }
+            
+            .rates-table {
+                overflow-x: auto;
+            }
+            
+            .rates-table table {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            }
+            
+            .rates-table th,
+            .rates-table td {
+                padding: 15px;
+                text-align: center;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .rates-table th {
+                background: #2563eb;
+                color: white;
+                font-weight: 600;
+            }
+            
+            .rates-table tr:hover {
+                background: #f9fafb;
+            }
+            
+            .faq {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .faq-item {
+                background: white;
+                border-radius: 10px;
+                margin-bottom: 15px;
+                overflow: hidden;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            }
+            
+            .faq-question {
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+            }
+            
+            .faq-question h3 {
+                margin: 0;
+                font-size: 18px;
+            }
+            
+            .faq-answer {
+                padding: 0 20px;
+                display: none;
+                border-top: 1px solid #e5e7eb;
+            }
+            
+            .faq-answer p {
+                padding: 20px 0;
+                margin: 0;
+            }
+            
+            .cta-final {
+                text-align: center;
+                color: white;
+            }
+            
+            .cta-final h2 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .cta-final p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+                opacity: 0.9;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
