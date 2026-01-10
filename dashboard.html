@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SMSProvider</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-sms"></i>
+                <span>SMS<span class="logo-highlight">Provider</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="api.html">API Docs</a>
+                <a href="dashboard.html" class="dashboard-btn active">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="#" class="btn-logout">Logout</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Main -->
+    <div class="dashboard-main">
+        <div class="container">
+            <!-- Welcome & Balance -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1 class="welcome-message">Welcome, <strong>User</strong></h1>
+                    <p>Your virtual number service dashboard</p>
+                </div>
+                <div class="balance-section">
+                    <div class="balance-card">
+                        <h3>Current Balance</h3>
+                        <div class="balance-amount">₹0.00</div>
+                        <a href="#" class="btn-add-balance">Add Balance</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-grid">
+                    <a href="#get-number" class="action-card">
+                        <i class="fas fa-sim-card"></i>
+                        <span>Get Virtual Number</span>
+                    </a>
+                    <a href="#api-keys" class="action-card">
+                        <i class="fas fa-key"></i>
+                        <span>API Keys</span>
+                    </a>
+                    <a href="#history" class="action-card">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </a>
+                    <a href="#support" class="action-card">
+                        <i class="fas fa-headset"></i>
+                        <span>Support</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="dashboard-content">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Get Number Form -->
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-mobile-alt"></i> Get Virtual Number</h3>
+                        <form class="number-form">
+                            <div class="form-group">
+                                <label>Select Service</label>
+                                <select>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="telegram">Telegram</option>
+                                    <option value="google">Google</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="amazon">Amazon</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Country</label>
+                                <select>
+                                    <option value="IN">India (+91)</option>
+                                    <option value="US">USA (+1)</option>
+                                    <option value="UK">UK (+44)</option>
+                                    <option value="ID">Indonesia (+62)</option>
+                                    <option value="RU">Russia (+7)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-plus"></i> Get Number (₹5)
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Recent OTPs -->
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-sms"></i> Recent OTPs</h3>
+                        <div class="otp-list">
+                            <div class="otp-item">
+                                <div class="otp-service">WhatsApp</div>
+                                <div class="otp-number">+91 98765XXXXX</div>
+                                <div class="otp-code">123456</div>
+                                <div class="otp-time">2 min ago</div>
+                            </div>
+                            <!-- More OTPs will be added by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- API Keys -->
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-code"></i> API Keys</h3>
+                        <div class="api-key-card">
+                            <div class="api-key-header">
+                                <span>Live API Key</span>
+                                <button class="copy-api-key">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <div class="api-key-value">
+                                sms_prov_sk_live_xxxxxxxxxxxx
+                            </div>
+                            <p class="api-note">
+                                <i class="fas fa-info-circle"></i>
+                                Use this key in your API requests
+                            </p>
+                        </div>
+                        <a href="api.html" class="btn-api-docs">
+                            <i class="fas fa-book"></i> View API Documentation
+                        </a>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Numbers Used</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">156</div>
+                                <div class="stat-label">OTPs Received</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">₹125</div>
+                                <div class="stat-label">Total Spent</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SMSProvider</h3>
+                    <p>Your reliable virtual number service</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Dashboard</h3>
+                    <a href="#get-number">Get Number</a>
+                    <a href="#history">History</a>
+                    <a href="#balance">Balance</a>
+                    <a href="#settings">Settings</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><i class="fas fa-envelope"></i> support@smsprovider.com</p>
+                    <p><i class="fas fa-clock"></i> 24/7 Available</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SMSProvider Dashboard</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
