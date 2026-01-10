@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DG OTP SERVICE - Send OTP with Virtual Numbers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .pricing-card {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #667eea, #764ba2) border-box;
+        }
+        .api-code {
+            font-family: 'Courier New', monospace;
+            background: #1a202c;
+            color: #68d391;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .ticket-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .ticket-message.active {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-sms text-2xl"></i>
+                    <span class="text-2xl font-bold">DG OTP SERVICE</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#api" class="nav-link">API Docs</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-white hover:text-gray-200">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="#register" class="bg-white text-purple-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+                        <i class="fas fa-user-plus mr-2"></i>Sign Up Free
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Send OTP with <span class="text-yellow-300">Virtual Numbers</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                Reliable OTP delivery service with 99% delivery rate. 
+                Start with ₹50 free credit!
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6 mb-12">
+                <a href="#register" class="bg-white text-purple-700 px-8 py-4 rounded-full text-xl font-bold hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-rocket mr-2"></i>Start Free Trial
+                </a>
+                <a href="#api" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-xl font-bold hover:bg-white hover:text-purple-700 transition">
+                    <i class="fas fa-code mr-2"></i>API Documentation
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="stat-card p-6 rounded-2xl">
+                    <div class="text-4xl font-bold">99.5%</div>
+                    <div class="text-gray-300">Delivery Rate</div>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <div class="text-4xl font-bold">₹0.25</div>
+                    <div class="text-gray-300">Per OTP</div>
+                </div>
+                <div class="stat-card p-6 rounded-2xl">
+                    <div class="text-4xl font-bold">24/7</div>
+                    <div class="text-gray-300">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Why Choose DG OTP SERVICE?
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Feature 1 -->
+                <div class="text-center card-hover p-8 rounded-2xl shadow-lg bg-gradient-to-br from-blue-50 to-purple-50">
+                    <div class="feature-icon gradient-bg text-white">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Virtual Numbers</h3>
+                    <p class="text-gray-600">
+                        Use our pool of virtual numbers for OTP delivery. No need to buy your own SIM cards.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center card-hover p-8 rounded-2xl shadow-lg bg-gradient-to-br from-green-50 to-blue-50">
+                    <div class="feature-icon gradient-bg text-white">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Fast Delivery</h3>
+                    <p class="text-gray-600">
+                        OTP delivered within 2-5 seconds. High-speed API with 99.5% success rate.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center card-hover p-8 rounded-2xl shadow-lg bg-gradient-to-br from-yellow-50 to-pink-50">
+                    <div class="feature-icon gradient-bg text-white">
+                        <i class="fas fa-wallet text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Pay As You Go</h3>
+                    <p class="text-gray-600">
+                        No monthly fees. Pay only for OTPs sent. Start with ₹50 free credit.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div class="card-hover p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shield-alt text-green-500 mr-3"></i>
+                        Secure & Reliable
+                    </h4>
+                    <p class="text-gray-600">
+                        Bank-level security. All OTPs are encrypted and delivered through secure channels.
+                    </p>
+                </div>
+                
+                <div class="card-hover p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-blue-500 mr-3"></i>
+                        Real-time Analytics
+                    </h4>
+                    <p class="text-gray-600">
+                        Track every OTP with detailed logs, delivery reports, and analytics dashboard.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Simple & Transparent Pricing
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free Plan -->
+                <div class="pricing-card p-8 rounded-2xl shadow-lg bg-white">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Free Trial</h3>
+                        <div class="text-5xl font-bold text-purple-600">₹0</div>
+                        <div class="text-gray-500">for first 50 OTPs</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            ₹50 Free Credit
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            50 Free OTPs
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Basic Dashboard
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Email Support
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showRegister()" class="w-full bg-purple-600 text-white py-3 rounded-full font-bold hover:bg-purple-700 transition">
+                        Get Free Credit
+                    </button>
+                </div>
+                
+                <!-- Pay As You Go -->
+                <div class="pricing-card p-8 rounded-2xl shadow-lg bg-white transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-2xl">
+                        MOST POPULAR
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Pay As You Go</h3>
+                        <div class="text-5xl font-bold text-purple-600">₹0.25</div>
+                        <div class="text-gray-500">per OTP</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            No Monthly Commitment
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Min ₹100 Recharge
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Priority Delivery
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            WhatsApp Support
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showRegister()" class="w-full gradient-bg text-white py-3 rounded-full font-bold hover:opacity-90 transition">
+                        Start Earning Today
+                    </button>
+                </div>
+                
+                <!-- Business Plan -->
+                <div class="pricing-card p-8 rounded-2xl shadow-lg bg-white">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Business</h3>
+                        <div class="text-5xl font-bold text-purple-600">₹0.15</div>
+                        <div class="text-gray-500">per OTP (bulk)</div>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Min ₹2000 Recharge
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Dedicated Numbers
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Premium Support
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            Custom Sender ID
+                        </li>
+                    </ul>
+                    
+                    <button onclick="showRegister()" class="w-full bg-gray-800 text-white py-3 rounded-full font-bold hover:bg-black transition">
+                        Contact for Enterprise
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Commission System -->
+            <div class="mt-16 p-8 gradient-bg rounded-2xl text-white">
+                <h3 class="text-3xl font-bold mb-6 text-center">Earn Commission on Every Referral!</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-5xl font-bold">10%</div>
+                        <div class="text-xl">Lifetime Commission</div>
+                        <p class="mt-2 opacity-90">On every recharge by referred users</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold">₹500+</div>
+                        <div class="text-xl">Average Monthly Earning</div>
+                        <p class="mt-2 opacity-90">Per active referral</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold">Unlimited</div>
+                        <div class="text-xl">Referrals Allowed</div>
+                        <p class="mt-2 opacity-90">No limit on how many users you can refer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Documentation -->
+    <section id="api" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Easy API Integration
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- API Example -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Send OTP API</h3>
+                    <div class="api-code p-6 rounded-lg mb-6">
+                        <pre class="text-sm overflow-x-auto">
+<span class="text-green-400">// Send OTP Request</span>
+<span class="text-blue-400">POST</span> <span class="text-yellow-300">https://api.dgotpservice.com/v1/send-otp</span>
+
+<span class="text-green-400">Headers:</span>
+{
+  "<span class="text-purple-300">X-API-Key</span>": "<span class="text-yellow-300">your_api_key_here</span>",
+  "<span class="text-purple-300">Content-Type</span>": "<span class="text-yellow-300">application/json</span>"
+}
+
+<span class="text-green-400">Body:</span>
+{
+  "<span class="text-purple-300">mobile</span>": "<span class="text-yellow-300">9876543210</span>",
+  "<span class="text-purple-300">purpose</span>": "<span class="text-yellow-300">login</span>",
+  "<span class="text-purple-300">sender_id</span>": "<span class="text-yellow-300">DGOTPS</span>"
+}
+
+<span class="text-green-400">Response:</span>
+{
+  "<span class="text-purple-300">success</span>": <span class="text-blue-400">true</span>,
+  "<span class="text-purple-300">otp_id</span>": "<span class="text-yellow-300">OTP_123456</span>",
+  "<span class="text-purple-300">cost</span>": <span class="text-blue-400">0.25</span>,
+  "<span class="text-purple-300">balance</span>": <span class="text-blue-400">499.75</span>
+}</pre>
+                    </div>
+                    
+                    <div class="api-code p-6 rounded-lg">
+                        <pre class="text-sm overflow-x-auto">
+<span class="text-green-400">// Verify OTP Request</span>
+<span class="text-blue-400">POST</span> <span class="text-yellow-300">https://api.dgotpservice.com/v1/verify-otp</span>
+
+<span class="text-green-400">Body:</span>
+{
+  "<span class="text-purple-300">mobile</span>": "<span class="text-yellow-300">9876543210</span>",
+  "<span class="text-purple-300">otp</span>": "<span class="text-yellow-300">123456</span>"
+}
+
+<span class="text-green-400">Response:</span>
+{
+  "<span class="text-purple-300">success</span>": <span class="text-blue-400">true</span>,
+  "<span class="text-purple-300">message</span>": "<span class="text-yellow-300">OTP verified successfully</span>"
+}</pre>
+                    </div>
+                </div>
+                
+                <!-- Language Support -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Available in All Languages</h3>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center p-4 bg-gray-100 rounded-lg">
+                            <i class="fab fa-js-square text-yellow-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">JavaScript</h4>
+                                <p class="text-sm text-gray-600">Node.js, React, Vue, Angular</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gray-100 rounded-lg">
+                            <i class="fab fa-python text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">Python</h4>
+                                <p class="text-sm text-gray-600">Django, Flask, FastAPI</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gray-100 rounded-lg">
+                            <i class="fab fa-php text-purple-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">PHP</h4>
+                                <p class="text-sm text-gray-600">Laravel, CodeIgniter</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gray-100 rounded-lg">
+                            <i class="fas fa-code text-green-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="font-bold">cURL</h4>
+                                <p class="text-sm text-gray-600">Command line, Shell scripts</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                        <h4 class="font-bold text-blue-800 mb-2">
+                            <i class="fas fa-bolt text-blue-600 mr-2"></i>
+                            Quick Start
+                        </h4>
+                        <p class="text-blue-700 mb-4">
+                            1. Sign up & get API key<br>
+                            2. Copy code snippet<br>
+                            3. Paste in your project<br>
+                            4. Start sending OTPs!
+                        </p>
+                        <button onclick="showRegister()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                            Get Your API Key Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Start Your OTP Business Today
+            </h2>
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <!-- Registration Form -->
+                    <div class="md:w-1/2 p-10">
+                        <h3 class="text-2xl font-bold mb-8">Create Free Account</h3>
+                        
+                        <form id="registrationForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="name" required 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Mobile Number *</label>
+                                    <input type="tel" id="mobile" required 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                           placeholder="9876543210">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                       placeholder="you@example.com">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Password *</label>
+                                    <input type="password" id="password" required 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Referral Code (Optional)</label>
+                                    <input type="text" id="referralCode"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                           placeholder="Enter if any">
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="terms" required 
+                                       class="h-4 w-4 text-purple-600 rounded focus:ring-purple-500">
+                                <label for="terms" class="ml-2 text-gray-700">
+                                    I agree to <a href="#" class="text-purple-600 hover:underline">Terms & Conditions</a> and <a href="#" class="text-purple-600 hover:underline">Privacy Policy</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full gradient-bg text-white py-4 rounded-lg font-bold text-lg hover:opacity-90 transition">
+                                <i class="fas fa-user-plus mr-2"></i>
+                                Create Account & Get ₹50 Free
+                            </button>
+                        </form>
+                        
+                        <div class="mt-6 text-center text-gray-600">
+                            Already have an account? 
+                            <a href="login.html" class="text-purple-600 font-semibold hover:underline">Login here</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits Side -->
+                    <div class="md:w-1/2 gradient-bg text-white p-10">
+                        <h3 class="text-2xl font-bold mb-8">Benefits You Get</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-gift text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">₹50 Free Credit</h4>
+                                    <p class="opacity-90">Instant credit upon registration</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-chart-bar text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">Dashboard Access</h4>
+                                    <p class="opacity-90">Monitor OTPs, balance, and earnings</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-code text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">API Key</h4>
+                                    <p class="opacity-90">Get instant API key for integration</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-handshake text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">Referral Program</h4>
+                                    <p class="opacity-90">Earn 10% commission on referrals</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-headset text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">24/7 Support</h4>
+                                    <p class="opacity-90">Email, WhatsApp, and ticket support</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 p-6 bg-white bg-opacity-20 rounded-xl">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold mb-2">2,500+</div>
+                                <div class="text-xl">Active Users</div>
+                                <div class="mt-2 opacity-90">Trusted by developers & businesses</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel Preview -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Powerful Admin Panel
+            </h2>
+            
+            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="bg-gray-800 px-6 py-4 flex items-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="ml-4 text-white font-mono">DG OTP SERVICE - Admin Panel</div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-green-900 bg-opacity-30 p-4 rounded-lg">
+                            <div class="text-green-400 text-2xl font-bold">1,284</div>
+                            <div class="text-gray-400">Active Users</div>
+                        </div>
+                        <div class="bg-blue-900 bg-opacity-30 p-4 rounded-lg">
+                            <div class="text-blue-400 text-2xl font-bold">₹2,45,680</div>
+                            <div class="text-gray-400">Total Revenue</div>
+                        </div>
+                        <div class="bg-purple-900 bg-opacity-30 p-4 rounded-lg">
+                            <div class="text-purple-400 text-2xl font-bold">12,458</div>
+                            <div class="text-gray-400">OTPs Today</div>
+                        </div>
+                        <div class="bg-yellow-900 bg-opacity-30 p-4 rounded-lg">
+                            <div class="text-yellow-400 text-2xl font-bold">₹18,420</div>
+                            <div class="text-gray-400">Pending Deposits</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="text-white font-mono text-sm overflow-x-auto">
+                            <div class="flex border-b border-gray-700 pb-2 mb-2">
+                                <div class="w-1/4">User Email</div>
+                                <div class="w-1/4">Balance</div>
+                                <div class="w-1/4">Status</div>
+                                <div class="w-1/4">Actions</div>
+                            </div>
+                            <div class="flex py-2">
+                                <div class="w-1/4">user1@example.com</div>
+                                <div class="w-1/4">₹1,250</div>
+                                <div class="w-1/4"><span class="bg-green-500 px-2 py-1 rounded">Active</span></div>
+                                <div class="w-1/4">
+                                    <button class="bg-blue-500 px-3 py-1 rounded text-xs mr-2">Edit</button>
+                                    <button class="bg-red-500 px-3 py-1 rounded text-xs">Block</button>
+                                </div>
+                            </div>
+                            <div class="flex py-2">
+                                <div class="w-1/4">user2@example.com</div>
+                                <div class="w-1/4">₹500</div>
+                                <div class="w-1/4"><span class="bg-yellow-500 px-2 py-1 rounded">Pending</span></div>
+                                <div class="w-1/4">
+                                    <button class="bg-green-500 px-3 py-1 rounded text-xs mr-2">Approve</button>
+                                    <button class="bg-red-500 px-3 py-1 rounded text-xs">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400 mb-4">Full control over users, deposits, commissions, and settings</p>
+                        <button onclick="showAdminDemo()" class="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700">
+                            <i class="fas fa-eye mr-2"></i>View Admin Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">
+                Contact Support
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg">
+                    <div class="text-4xl text-blue-500 mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email Support</h3>
+                    <p class="text-gray-600 mb-4">24-48 hour response time</p>
+                    <a href="mailto:support@dgotpservice.com" class="text-blue-600 font-semibold">
+                        support@dgotpservice.com
+                    </a>
+                </div>
+                
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg">
+                    <div class="text-4xl text-green-500 mb-4">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp Support</h3>
+                    <p class="text-gray-600 mb-4">Quick response within hours</p>
+                    <a href="https://wa.me/919876543210" class="text-green-600 font-semibold">
+                        +91 98765 43210
+                    </a>
+                </div>
+                
+                <div class="text-center p-8 bg-white rounded-2xl shadow-lg">
+                    <div class="text-4xl text-purple-500 mb-4">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ticket System</h3>
+                    <p class="text-gray-600 mb-4">For technical issues</p>
+                    <button onclick="showTicketForm()" class="bg-purple-600 text-white px-6 py-2 rounded-lg">
+                        Open Ticket
+                    </button>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
+                
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <button class="flex justify-between items-center w-full text-left font-bold" onclick="toggleFAQ(1)">
+                            <span>How do I get started?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600 hidden" id="faq1">
+                            1. Register for free account<br>
+                            2. Get ₹50 free credit<br>
+                            3. Use your API key in code<br>
+                            4. Start sending OTPs!
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <button class="flex justify-between items-center w-full text-left font-bold" onclick="toggleFAQ(2)">
+                            <span>How are payments handled?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600 hidden" id="faq2">
+                            Users deposit via UPI/Bank Transfer. Admin approves deposits after verifying UTR. Balance gets added instantly after approval.
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <button class="flex justify-between items-center w-full text-left font-bold" onclick="toggleFAQ(3)">
+                            <span>Can I earn commission?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600 hidden" id="faq3">
+                            Yes! You get 10% lifetime commission on every recharge made by users you refer. No limit on earnings.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-sms text-2xl mr-3"></i>
+                        <span class="text-2xl font-bold">DG OTP SERVICE</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Reliable OTP delivery service with virtual numbers. Start your OTP business today!
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#api" class="text-gray-400 hover:text-white">API Docs</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Refund Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Acceptable Use</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">
+                        <i class="fas fa-envelope mr-2"></i>
+                        support@dgotpservice.com
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DG OTP SERVICE. All rights reserved.</p>
+                <p class="mt-2">Made with <i class="fas fa-heart text-red-500"></i> for entrepreneurs</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Functions -->
+    <script>
+        // Registration Form Handler
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Simulate registration
+            alert(`🎉 Registration Successful!\n\nWelcome ${name}!\nYour account has been created.\nCheck ${email} for verification link.\n\n₹50 free credit has been added to your account!`);
+            
+            // Reset form
+            document.getElementById('registrationForm').reset();
+            
+            // Redirect to login (simulated)
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 3000);
+        });
+        
+        // FAQ Toggle
+        function toggleFAQ(num) {
+            const faq = document.getElementById('faq' + num);
+            const icon = event.currentTarget.querySelector('i');
+            
+            if (faq.classList.contains('hidden')) {
+                faq.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                faq.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+        
+        // Show Register Section
+        function showRegister() {
+            document.getElementById('register').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show Admin Demo
+        function showAdminDemo() {
+            alert('🔐 Admin Panel Features:\n\n1. User Management (Block/Unblock)\n2. Deposit Approval (Accept/Reject)\n3. Balance Editing\n4. Commission Settings\n5. SMS Provider Settings\n6. Analytics Dashboard\n\nContact admin for access.');
+        }
+        
+        // Show Ticket Form
+        function showTicketForm() {
+            alert('🎫 Support Ticket System\n\nSubmit ticket via:\n1. Email: support@dgotpservice.com\n2. WhatsApp: +91 98765 43210\n3. Dashboard (After login)\n\nWe respond within 24 hours!');
+        }
+        
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Stats Counter Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-card .text-4xl');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+        
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateStats, 500);
+        });
+    </script>
+</body>
+</html>
