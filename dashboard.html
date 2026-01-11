@@ -12,7 +12,6 @@
             --primary: #667eea;
             --secondary: #764ba2;
             --sidebar-width: 250px;
-            --header-height: 70px;
         }
         
         * {
@@ -33,21 +32,21 @@
             min-height: 100vh;
         }
         
-        /* Sidebar */
+        /* Sidebar - Left */
         .sidebar {
             width: var(--sidebar-width);
             background: white;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
             position: fixed;
             height: 100vh;
-            z-index: 100;
-            transition: transform 0.3s;
+            overflow-y: auto;
+            z-index: 1000;
         }
         
         .sidebar-header {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
+            padding: 25px 20px;
             text-align: center;
+            border-bottom: 1px solid #eee;
         }
         
         .sidebar-header h2 {
@@ -56,6 +55,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 22px;
         }
         
         .sidebar-nav {
@@ -66,7 +66,7 @@
             display: flex;
             align-items: center;
             padding: 15px 25px;
-            color: #666;
+            color: #555;
             text-decoration: none;
             transition: all 0.3s;
             border-left: 4px solid transparent;
@@ -79,8 +79,8 @@
         }
         
         .nav-item i {
-            margin-right: 12px;
             width: 20px;
+            margin-right: 12px;
             text-align: center;
         }
         
@@ -93,14 +93,12 @@
         
         /* Header */
         .header {
-            background: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
         }
         
         .header-left h1 {
@@ -113,66 +111,25 @@
             font-size: 14px;
         }
         
-        /* Header Right - Top Menu */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 15px;
-            background: #f8f9ff;
-            border-radius: 50px;
-            cursor: pointer;
-        }
-        
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+        /* Top Menu Button */
+        .top-menu-container {
+            position: relative;
         }
         
         .menu-btn {
             background: var(--primary);
             color: white;
             border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            display: none;
-        }
-        
-        /* Top Menu Dropdown */
-        .top-menu-dropdown {
-            position: relative;
-        }
-        
-        .dropdown-btn {
-            background: #f8f9ff;
-            border: none;
             padding: 12px 20px;
             border-radius: 10px;
             cursor: pointer;
-            font-weight: 500;
-            color: #333;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 500;
         }
         
-        .dropdown-content {
+        .top-menu-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
@@ -183,9 +140,10 @@
             padding: 10px 0;
             display: none;
             z-index: 1000;
+            margin-top: 10px;
         }
         
-        .dropdown-content.show {
+        .top-menu-dropdown.show {
             display: block;
         }
         
@@ -203,82 +161,277 @@
             background: #f8f9ff;
         }
         
-        /* Cards */
-        .stats-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+        /* Wallet Balance */
+        .wallet-balance {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .stat-card {
+        .balance-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .add-funds-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Service Selection Box */
+        .service-box {
             background: white;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            margin-bottom: 25px;
         }
         
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-        }
-        
-        .icon-balance { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .icon-otp { background: linear-gradient(135deg, #f093fb, #f5576c); }
-        .icon-numbers { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-        .icon-success { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-        
-        .stat-info h3 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        
-        .stat-info p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        /* Quick Actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .action-btn {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
+        .service-box h2 {
+            margin-bottom: 20px;
             color: #333;
-            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .action-btn:hover {
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .country-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .country-card.selected {
+            border-color: var(--primary);
+            background: #e6eeff;
+        }
+        
+        .country-flag {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        
+        .service-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
             transform: translateY(-5px);
         }
         
-        .action-btn i {
-            font-size: 30px;
+        .service-card.selected {
+            border-color: var(--primary);
+            background: #e6eeff;
+        }
+        
+        .service-icon {
+            font-size: 28px;
             margin-bottom: 10px;
             color: var(--primary);
         }
         
-        /* Modal */
+        .buy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Virtual Number Display Box */
+        .number-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .number-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .virtual-number-display {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .number-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .number-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .virtual-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .timer {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .timer .time-left {
+            color: #dc2626;
+            font-weight: bold;
+        }
+        
+        /* SMS Inbox Box */
+        .sms-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .sms-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sms-inbox {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .sms-message {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .sms-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .sms-sender {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .sms-time {
+            color: #999;
+        }
+        
+        .sms-content {
+            font-family: monospace;
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+        }
+        
+        .sms-otp {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .no-sms {
+            text-align: center;
+            color: #999;
+            padding: 50px 20px;
+            font-style: italic;
+        }
+        
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -300,8 +453,8 @@
             background: white;
             padding: 30px;
             border-radius: 20px;
-            max-width: 500px;
             width: 90%;
+            max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
         }
@@ -343,6 +496,7 @@
             width: 100%;
         }
         
+        /* QR Code */
         .qr-code-container {
             text-align: center;
             margin: 20px 0;
@@ -350,13 +504,16 @@
         
         .qr-code-container img {
             max-width: 200px;
-            margin: 0 auto;
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            background: white;
         }
         
         /* Responsive */
         @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
+                transition: transform 0.3s;
             }
             
             .sidebar.show {
@@ -367,65 +524,68 @@
                 margin-left: 0;
             }
             
-            .menu-btn {
+            .mobile-menu-btn {
                 display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: var(--primary);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 10px;
+                font-size: 20px;
+                cursor: pointer;
             }
         }
         
         @media (max-width: 768px) {
-            .stats-cards {
-                grid-template-columns: 1fr;
+            .country-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .quick-actions {
+            .service-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 480px) {
-            .quick-actions {
+            .country-grid, .service-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Dashboard Container -->
     <div class="dashboard-container">
-        <!-- Sidebar -->
+        <!-- Sidebar (Left) -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2><i class="fas fa-sms"></i> SMSProvider</h2>
             </div>
             
             <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-item active">
+                <a href="#home" class="nav-item active" onclick="showSection('home')">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <a href="#get-number" class="nav-item">
-                    <i class="fas fa-sim-card"></i> Get Number
-                </a>
-                <a href="#history" class="nav-item">
+                <a href="#history" class="nav-item" onclick="showSection('history')">
                     <i class="fas fa-history"></i> History
                 </a>
-                <a href="#orders" class="nav-item">
-                    <i class="fas fa-shopping-cart"></i> Orders
-                </a>
-                <a href="#wallet" class="nav-item">
-                    <i class="fas fa-wallet"></i> Wallet
-                </a>
-                <a href="#profile" class="nav-item">
+                <a href="#profile" class="nav-item" onclick="showSection('profile')">
                     <i class="fas fa-user"></i> Profile
                 </a>
-                <a href="#support" class="nav-item">
+                <a href="#support" class="nav-item" onclick="showSection('support')">
                     <i class="fas fa-headset"></i> Support
                 </a>
-                <a href="#logout" class="nav-item" id="logoutBtn">
+                <a href="#logout" class="nav-item" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </nav>
@@ -434,134 +594,128 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
+            <div class="header">
                 <div class="header-left">
                     <h1>Welcome, <span id="userName">User</span></h1>
                     <p id="currentDate">Loading...</p>
                 </div>
                 
-                <div class="header-right">
-                    <button class="menu-btn" id="menuToggle">
-                        <i class="fas fa-bars"></i>
+                <!-- Top Menu Button -->
+                <div class="top-menu-container">
+                    <button class="menu-btn" onclick="toggleTopMenu()">
+                        <i class="fas fa-ellipsis-v"></i> Menu
                     </button>
-                    
-                    <!-- Wallet Balance -->
-                    <div class="wallet-balance">
-                        <div class="balance-display">
-                            <i class="fas fa-wallet"></i>
-                            ₹<span id="walletBalance">0</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Top Menu Dropdown -->
-                    <div class="top-menu-dropdown">
-                        <button class="dropdown-btn" id="topMenuBtn">
-                            <i class="fas fa-ellipsis-v"></i> Menu
-                        </button>
-                        <div class="dropdown-content" id="topMenuDropdown">
-                            <a href="#add-fund" class="dropdown-item" onclick="openAddFundModal()">
-                                <i class="fas fa-plus-circle"></i> Add Funds
-                            </a>
-                            <a href="#new-order" class="dropdown-item" onclick="openNewOrderModal()">
-                                <i class="fas fa-plus"></i> New Order
-                            </a>
-                            <a href="#orders" class="dropdown-item">
-                                <i class="fas fa-list"></i> My Orders
-                            </a>
-                            <a href="#settings" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#logout" class="dropdown-item" id="logoutTopBtn">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- User Profile -->
-                    <div class="user-profile" onclick="openProfileModal()">
-                        <div class="user-avatar" id="userAvatar">
-                            U
-                        </div>
-                        <div class="user-info">
-                            <div class="user-name" id="topUserName">User</div>
-                            <div class="user-email" id="userEmail">user@example.com</div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Stats Cards -->
-            <div class="stats-cards">
-                <div class="stat-card">
-                    <div class="stat-icon icon-balance">
-                        <i class="fas fa-rupee-sign"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="balanceAmount">₹0</h3>
-                        <p>Wallet Balance</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon icon-otp">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="totalOtps">0</h3>
-                        <p>Total OTPs Received</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon icon-numbers">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="numbersUsed">0</h3>
-                        <p>Numbers Used</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon icon-success">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="successRate">0%</h3>
-                        <p>Success Rate</p>
+                    <div class="top-menu-dropdown" id="topMenuDropdown">
+                        <a href="#new-order" class="dropdown-item" onclick="openNewOrderModal()">
+                            <i class="fas fa-plus-circle"></i> New Order
+                        </a>
+                        <a href="#orders" class="dropdown-item" onclick="showSection('orders')">
+                            <i class="fas fa-shopping-cart"></i> My Orders
+                        </a>
+                        <a href="#api-key" class="dropdown-item" onclick="showApiKey()">
+                            <i class="fas fa-key"></i> API Key
+                        </a>
+                        <a href="#support" class="dropdown-item" onclick="showSection('support')">
+                            <i class="fas fa-headset"></i> Support
+                        </a>
+                        <a href="#add-fund" class="dropdown-item" onclick="openAddFundModal()">
+                            <i class="fas fa-wallet"></i> Add Funds
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Actions -->
-            <div class="quick-actions">
-                <a href="#get-number" class="action-btn" onclick="openNewOrderModal()">
-                    <i class="fas fa-plus-circle"></i>
-                    <span>New Order</span>
-                </a>
-                
-                <a href="#add-fund" class="action-btn" onclick="openAddFundModal()">
-                    <i class="fas fa-wallet"></i>
-                    <span>Add Funds</span>
-                </a>
-                
-                <a href="#history" class="action-btn">
-                    <i class="fas fa-history"></i>
-                    <span>Order History</span>
-                </a>
-                
-                <a href="#api" class="action-btn">
-                    <i class="fas fa-code"></i>
-                    <span>API Docs</span>
-                </a>
+            <!-- Wallet Balance -->
+            <div class="wallet-balance">
+                <div>
+                    <div style="color: #666; font-size: 14px;">Wallet Balance</div>
+                    <div class="balance-amount">₹<span id="walletBalance">0</span></div>
+                </div>
+                <button class="add-funds-btn" onclick="openAddFundModal()">
+                    <i class="fas fa-plus"></i> Add Funds
+                </button>
             </div>
 
-            <!-- Recent Activity -->
-            <div class="recent-activity">
-                <h2>Recent Activity</h2>
-                <div class="activity-list" id="activityList">
-                    <!-- Activities will be loaded here -->
+            <!-- Home Section (Default) -->
+            <div id="homeSection" class="section active">
+                <!-- Service Selection Box -->
+                <div class="service-box">
+                    <h2><i class="fas fa-globe-americas"></i> Select Country</h2>
+                    <div class="country-grid" id="countryGrid">
+                        <!-- Countries loaded by JS -->
+                    </div>
+                    
+                    <h2><i class="fas fa-list-alt"></i> Select Service</h2>
+                    <div class="service-grid" id="serviceGrid">
+                        <!-- Services loaded by JS -->
+                    </div>
+                    
+                    <button class="buy-btn" onclick="buyService()">
+                        <i class="fas fa-shopping-cart"></i> Buy Service
+                    </button>
+                </div>
+
+                <!-- Virtual Number Display Box -->
+                <div class="number-box" id="numberBox" style="display: none;">
+                    <h2><i class="fas fa-mobile-alt"></i> Your Virtual Number</h2>
+                    <div class="virtual-number-display">
+                        <div class="number-header">
+                            <div class="number-label">Virtual Number:</div>
+                            <button class="copy-btn" onclick="copyNumber()">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="virtual-number" id="virtualNumber">+91 98765 43210</div>
+                        <div class="timer">
+                            Expires in: <span class="time-left" id="timeLeft">10:00</span> minutes
+                        </div>
+                    </div>
+                    <p style="color: #666; font-size: 14px; margin-top: 10px;">
+                        <i class="fas fa-info-circle"></i> Use this number for OTP verification. All SMS will appear below.
+                    </p>
+                </div>
+
+                <!-- SMS Inbox Box -->
+                <div class="sms-box">
+                    <h2><i class="fas fa-inbox"></i> SMS Inbox</h2>
+                    <div class="sms-inbox" id="smsInbox">
+                        <div class="no-sms">
+                            <i class="fas fa-comment-slash" style="font-size: 48px; margin-bottom: 15px;"></i>
+                            <p>No messages yet. When you receive SMS, they will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Section (Hidden by default) -->
+            <div id="historySection" class="section" style="display: none;">
+                <h2>Order History</h2>
+                <div id="orderHistory">
+                    <!-- History will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Profile Section (Hidden by default) -->
+            <div id="profileSection" class="section" style="display: none;">
+                <h2>Profile</h2>
+                <div id="profileContent">
+                    <!-- Profile will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Support Section (Hidden by default) -->
+            <div id="supportSection" class="section" style="display: none;">
+                <h2>Support</h2>
+                <div id="supportContent">
+                    <!-- Support content -->
+                </div>
+            </div>
+
+            <!-- Orders Section (Hidden by default) -->
+            <div id="ordersSection" class="section" style="display: none;">
+                <h2>My Orders</h2>
+                <div id="ordersContent">
+                    <!-- Orders will be loaded here -->
                 </div>
             </div>
         </main>
@@ -571,46 +725,53 @@
     <div class="modal" id="addFundModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeAddFundModal()">&times;</span>
-            <h2><i class="fas fa-wallet"></i> Add Funds to Wallet</h2>
+            <h2><i class="fas fa-wallet"></i> Add Funds</h2>
             
             <div class="form-group">
                 <label>Amount (₹)</label>
-                <input type="number" id="fundAmount" placeholder="Enter amount" min="100" required>
+                <input type="number" id="fundAmount" placeholder="Enter amount" min="100" value="500" required>
             </div>
             
             <div class="form-group">
                 <label>Payment Method</label>
-                <select id="paymentMethod">
+                <select id="paymentMethod" onchange="showPaymentMethod()">
                     <option value="upi">UPI Payment</option>
                     <option value="crypto">Cryptocurrency</option>
-                    <option value="card">Credit/Debit Card</option>
                     <option value="paytm">Paytm</option>
                 </select>
             </div>
             
-            <div id="upiSection" class="payment-section">
+            <div id="upiPayment" class="payment-method">
                 <div class="qr-code-container">
-                    <p>Scan QR Code to pay</p>
+                    <p>Scan this QR code to pay</p>
                     <img src="https://i.ibb.co/dNxQgXJ/1000018674.jpg" alt="QR Code">
-                    <p>UPI ID: smsprovider@upi</p>
+                    <p style="margin-top: 10px; color: #666;">UPI ID: smsprovider@upi</p>
                 </div>
                 
                 <div class="form-group">
                     <label>Enter UTR Number</label>
-                    <input type="text" id="utrNumber" placeholder="Enter UTR number from payment">
+                    <input type="text" id="utrNumber" placeholder="Enter UTR from your payment">
                 </div>
             </div>
             
-            <div id="cryptoSection" class="payment-section" style="display: none;">
+            <div id="cryptoPayment" class="payment-method" style="display: none;">
                 <div class="form-group">
                     <label>Select Cryptocurrency</label>
-                    <select>
+                    <select id="cryptoType">
                         <option value="btc">Bitcoin (BTC)</option>
                         <option value="eth">Ethereum (ETH)</option>
                         <option value="usdt">USDT (TRC20)</option>
                     </select>
                 </div>
-                <p>Send payment to: <code id="cryptoAddress">1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2</code></p>
+                <div class="crypto-address">
+                    <p>Send payment to:</p>
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace; word-break: break-all;">
+                        1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+                    </div>
+                    <button class="copy-btn" onclick="copyCryptoAddress()" style="width: 100%;">
+                        <i class="fas fa-copy"></i> Copy Address
+                    </button>
+                </div>
             </div>
             
             <button class="submit-btn" onclick="submitPayment()">
@@ -619,91 +780,23 @@
         </div>
     </div>
 
-    <!-- New Order Modal -->
-    <div class="modal" id="newOrderModal">
+    <!-- API Key Modal -->
+    <div class="modal" id="apiKeyModal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeNewOrderModal()">&times;</span>
-            <h2><i class="fas fa-plus-circle"></i> New Order</h2>
+            <span class="close-modal" onclick="closeApiKeyModal()">&times;</span>
+            <h2><i class="fas fa-key"></i> Your API Key</h2>
             
-            <div class="form-group">
-                <label>Select Service</label>
-                <select id="orderService">
-                    <option value="whatsapp">WhatsApp</option>
-                    <option value="telegram">Telegram</option>
-                    <option value="google">Google</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="amazon">Amazon</option>
-                </select>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p style="color: #666; margin-bottom: 10px;">Your secret API key:</p>
+                <div id="apiKeyValue" style="font-family: monospace; background: white; padding: 15px; border-radius: 5px; border: 1px solid #e5e7eb; word-break: break-all;"></div>
             </div>
             
-            <div class="form-group">
-                <label>Select Country</label>
-                <select id="orderCountry">
-                    <option value="IN">India (+91)</option>
-                    <option value="US">USA (+1)</option>
-                    <option value="UK">UK (+44)</option>
-                    <option value="ID">Indonesia (+62)</option>
-                </select>
-            </div>
+            <p style="color: #666; font-size: 14px; margin: 15px 0;">
+                <i class="fas fa-exclamation-triangle"></i> Keep this key secret. Do not share it publicly.
+            </p>
             
-            <div class="form-group">
-                <label>Duration (Minutes)</label>
-                <select id="orderDuration">
-                    <option value="5">5 minutes (₹5)</option>
-                    <option value="10">10 minutes (₹8)</option>
-                    <option value="30">30 minutes (₹15)</option>
-                    <option value="60">60 minutes (₹25)</option>
-                </select>
-            </div>
-            
-            <div class="price-display">
-                <p>Total Cost: <strong id="orderPrice">₹5</strong></p>
-                <p>Wallet Balance: <strong id="currentBalance">₹0</strong></p>
-            </div>
-            
-            <button class="submit-btn" onclick="placeOrder()">
-                <i class="fas fa-shopping-cart"></i> Place Order
-            </button>
-        </div>
-    </div>
-
-    <!-- Profile Modal -->
-    <div class="modal" id="profileModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeProfileModal()">&times;</span>
-            <h2><i class="fas fa-user"></i> Profile</h2>
-            
-            <div class="profile-info">
-                <div class="profile-avatar">
-                    <div class="avatar-large" id="profileAvatar">U</div>
-                </div>
-                
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <label>Full Name:</label>
-                        <span id="profileName">User Name</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Email:</label>
-                        <span id="profileEmail">user@example.com</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Phone:</label>
-                        <span id="profilePhone">+91 9876543210</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>User ID:</label>
-                        <span id="profileUid">UID12345</span>
-                    </div>
-                    <div class="detail-item">
-                        <label>Joined:</label>
-                        <span id="profileJoined">Jan 2024</span>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="submit-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i> Logout
+            <button class="submit-btn" onclick="copyApiKey()">
+                <i class="fas fa-copy"></i> Copy API Key
             </button>
         </div>
     </div>
@@ -715,6 +808,457 @@
     
     <script src="assets/js/firebase-config.js"></script>
     <script src="assets/js/auth.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Dashboard Manager
+        class DashboardManager {
+            constructor() {
+                this.auth = firebase.auth();
+                this.db = firebase.firestore();
+                this.currentUser = null;
+                this.userData = null;
+                this.selectedCountry = 'IN';
+                this.selectedService = 'whatsapp';
+                this.currentOrder = null;
+                this.timerInterval = null;
+            }
+
+            async init() {
+                this.currentUser = this.auth.currentUser;
+                
+                if (!this.currentUser) {
+                    window.location.href = "login.html";
+                    return;
+                }
+
+                await this.loadUserData();
+                this.updateUI();
+                this.loadCountries();
+                this.loadServices();
+                this.loadActiveOrder();
+                
+                // Set current date
+                this.updateDate();
+                
+                // Check for existing order every 30 seconds
+                setInterval(() => this.checkForSMS(), 30000);
+            }
+
+            async loadUserData() {
+                try {
+                    const userDoc = await this.db.collection('users').doc(this.currentUser.uid).get();
+                    const walletDoc = await this.db.collection('wallets').doc(this.currentUser.uid).get();
+                    
+                    this.userData = userDoc.exists ? userDoc.data() : {};
+                    this.walletData = walletDoc.exists ? walletDoc.data() : { balance: 0 };
+                    
+                } catch (error) {
+                    console.error("Error loading user data:", error);
+                }
+            }
+
+            updateUI() {
+                if (!this.userData) return;
+
+                // Update name
+                const name = this.userData.fullName || 'User';
+                document.getElementById('userName').textContent = name;
+                
+                // Wallet balance
+                const balance = this.walletData.balance || 0;
+                document.getElementById('walletBalance').textContent = balance.toLocaleString();
+            }
+
+            updateDate() {
+                const now = new Date();
+                const options = { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                };
+                document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+            }
+
+            loadCountries() {
+                const countries = [
+                    { code: 'IN', name: 'India', flag: '🇮🇳', price: 5 },
+                    { code: 'US', name: 'USA', flag: '🇺🇸', price: 10 },
+                    { code: 'UK', name: 'UK', flag: '🇬🇧', price: 8 },
+                    { code: 'ID', name: 'Indonesia', flag: '🇮🇩', price: 6 },
+                    { code: 'RU', name: 'Russia', flag: '🇷🇺', price: 7 },
+                    { code: 'AE', name: 'UAE', flag: '🇦🇪', price: 12 }
+                ];
+
+                const container = document.getElementById('countryGrid');
+                container.innerHTML = '';
+
+                countries.forEach(country => {
+                    const card = document.createElement('div');
+                    card.className = `country-card ${this.selectedCountry === country.code ? 'selected' : ''}`;
+                    card.innerHTML = `
+                        <div class="country-flag">${country.flag}</div>
+                        <div style="font-weight: bold;">${country.name}</div>
+                        <div style="color: #666; font-size: 14px;">₹${country.price}/OTP</div>
+                    `;
+                    card.onclick = () => this.selectCountry(country.code);
+                    container.appendChild(card);
+                });
+            }
+
+            loadServices() {
+                const services = [
+                    { id: 'whatsapp', name: 'WhatsApp', icon: 'fab fa-whatsapp' },
+                    { id: 'telegram', name: 'Telegram', icon: 'fab fa-telegram' },
+                    { id: 'google', name: 'Google', icon: 'fab fa-google' },
+                    { id: 'facebook', name: 'Facebook', icon: 'fab fa-facebook' },
+                    { id: 'instagram', name: 'Instagram', icon: 'fab fa-instagram' },
+                    { id: 'amazon', name: 'Amazon', icon: 'fab fa-amazon' },
+                    { id: 'paytm', name: 'Paytm', icon: 'fas fa-wallet' },
+                    { id: 'bank', name: 'Bank OTP', icon: 'fas fa-university' }
+                ];
+
+                const container = document.getElementById('serviceGrid');
+                container.innerHTML = '';
+
+                services.forEach(service => {
+                    const card = document.createElement('div');
+                    card.className = `service-card ${this.selectedService === service.id ? 'selected' : ''}`;
+                    card.innerHTML = `
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <div style="font-weight: bold;">${service.name}</div>
+                    `;
+                    card.onclick = () => this.selectService(service.id);
+                    container.appendChild(card);
+                });
+            }
+
+            selectCountry(countryCode) {
+                this.selectedCountry = countryCode;
+                this.loadCountries();
+            }
+
+            selectService(serviceId) {
+                this.selectedService = serviceId;
+                this.loadServices();
+            }
+
+            async buyService() {
+                const balance = this.walletData.balance || 0;
+                const price = 5; // Default price
+                
+                if (balance < price) {
+                    alert(`Insufficient balance. You need ₹${price}. Current balance: ₹${balance}`);
+                    openAddFundModal();
+                    return;
+                }
+
+                // Generate virtual number
+                const countryPrefix = {
+                    'IN': '+91',
+                    'US': '+1',
+                    'UK': '+44',
+                    'ID': '+62',
+                    'RU': '+7',
+                    'AE': '+971'
+                };
+
+                const prefix = countryPrefix[this.selectedCountry] || '+91';
+                const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+                const virtualNumber = `${prefix} ${randomNumber.toString().substring(0,5)} ${randomNumber.toString().substring(5)}`;
+
+                // Show number box
+                document.getElementById('numberBox').style.display = 'block';
+                document.getElementById('virtualNumber').textContent = virtualNumber;
+                
+                // Start timer (10 minutes)
+                let timeLeft = 600; // 10 minutes in seconds
+                this.startTimer(timeLeft);
+
+                // Create order
+                this.currentOrder = {
+                    id: 'order_' + Date.now(),
+                    number: virtualNumber,
+                    service: this.selectedService,
+                    country: this.selectedCountry,
+                    expiresAt: Date.now() + 600000, // 10 minutes
+                    messages: []
+                };
+
+                // Save to localStorage for demo
+                localStorage.setItem('currentOrder', JSON.stringify(this.currentOrder));
+                
+                // Show success message
+                alert(`Service purchased successfully! Virtual number: ${virtualNumber}`);
+                
+                // Simulate incoming SMS after 30 seconds
+                setTimeout(() => this.simulateSMS(), 30000);
+            }
+
+            startTimer(seconds) {
+                clearInterval(this.timerInterval);
+                
+                const timerElement = document.getElementById('timeLeft');
+                
+                this.timerInterval = setInterval(() => {
+                    const minutes = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    
+                    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                    
+                    if (seconds <= 0) {
+                        clearInterval(this.timerInterval);
+                        timerElement.textContent = "Expired";
+                        timerElement.style.color = "#dc2626";
+                    }
+                    
+                    seconds--;
+                }, 1000);
+            }
+
+            simulateSMS() {
+                if (!this.currentOrder) return;
+
+                const smsTemplates = {
+                    whatsapp: {
+                        sender: "WhatsApp",
+                        message: "Your WhatsApp verification code is: 123456",
+                        otp: "123456"
+                    },
+                    telegram: {
+                        sender: "Telegram",
+                        message: "Telegram code: 654321\n\nDo not give this code to anyone.",
+                        otp: "654321"
+                    },
+                    google: {
+                        sender: "Google",
+                        message: "G-123456 is your Google verification code.",
+                        otp: "123456"
+                    },
+                    facebook: {
+                        sender: "Facebook",
+                        message: "Facebook login code: 789012",
+                        otp: "789012"
+                    }
+                };
+
+                const template = smsTemplates[this.selectedService] || smsTemplates.whatsapp;
+                
+                const sms = {
+                    id: 'sms_' + Date.now(),
+                    sender: template.sender,
+                    message: template.message,
+                    otp: template.otp,
+                    time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                    timestamp: Date.now()
+                };
+
+                this.currentOrder.messages.push(sms);
+                localStorage.setItem('currentOrder', JSON.stringify(this.currentOrder));
+                
+                this.displaySMS(sms);
+            }
+
+            displaySMS(sms) {
+                const inbox = document.getElementById('smsInbox');
+                const noSms = inbox.querySelector('.no-sms');
+                
+                if (noSms) {
+                    noSms.style.display = 'none';
+                }
+
+                const smsElement = document.createElement('div');
+                smsElement.className = 'sms-message';
+                smsElement.innerHTML = `
+                    <div class="sms-header">
+                        <div class="sms-sender">${sms.sender}</div>
+                        <div class="sms-time">${sms.time}</div>
+                    </div>
+                    <div class="sms-content">${sms.message}</div>
+                    ${sms.otp ? `<div class="sms-otp">OTP: ${sms.otp}</div>` : ''}
+                `;
+                
+                inbox.insertBefore(smsElement, inbox.firstChild);
+            }
+
+            async loadActiveOrder() {
+                const savedOrder = localStorage.getItem('currentOrder');
+                if (savedOrder) {
+                    this.currentOrder = JSON.parse(savedOrder);
+                    
+                    // Check if order expired
+                    if (Date.now() > this.currentOrder.expiresAt) {
+                        localStorage.removeItem('currentOrder');
+                        this.currentOrder = null;
+                        return;
+                    }
+                    
+                    // Show number box
+                    document.getElementById('numberBox').style.display = 'block';
+                    document.getElementById('virtualNumber').textContent = this.currentOrder.number;
+                    
+                    // Calculate time left
+                    const timeLeft = Math.max(0, Math.floor((this.currentOrder.expiresAt - Date.now()) / 1000));
+                    this.startTimer(timeLeft);
+                    
+                    // Display existing messages
+                    this.currentOrder.messages.forEach(sms => this.displaySMS(sms));
+                }
+            }
+
+            async checkForSMS() {
+                if (!this.currentOrder) return;
+                
+                // Simulate random SMS arrival
+                if (Math.random() > 0.7) {
+                    this.simulateSMS();
+                }
+            }
+
+            async addFunds(amount, method, utr = null) {
+                try {
+                    // In real app, you would call your backend
+                    alert(`Payment of ₹${amount} submitted via ${method}. Admin will verify and add funds.`);
+                    return { success: true };
+                } catch (error) {
+                    console.error("Add funds error:", error);
+                    return { success: false, error: error.message };
+                }
+            }
+
+            logout() {
+                this.auth.signOut();
+            }
+        }
+
+        // Initialize Dashboard
+        const dashboard = new DashboardManager();
+
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function() {
+            dashboard.init();
+        });
+
+        // UI Functions
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+        }
+
+        function toggleTopMenu() {
+            document.getElementById('topMenuDropdown').classList.toggle('show');
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId + 'Section').style.display = 'block';
+            
+            // Update active nav
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find and activate corresponding nav item
+            const navItem = Array.from(document.querySelectorAll('.nav-item')).find(item => 
+                item.getAttribute('onclick')?.includes(sectionId)
+            );
+            if (navItem) navItem.classList.add('active');
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 992) {
+                toggleSidebar();
+            }
+        }
+
+        function openAddFundModal() {
+            document.getElementById('addFundModal').classList.add('show');
+        }
+
+        function closeAddFundModal() {
+            document.getElementById('addFundModal').classList.remove('show');
+        }
+
+        function showPaymentMethod() {
+            const method = document.getElementById('paymentMethod').value;
+            document.getElementById('upiPayment').style.display = method === 'upi' ? 'block' : 'none';
+            document.getElementById('cryptoPayment').style.display = method === 'crypto' ? 'block' : 'none';
+        }
+
+        function copyCryptoAddress() {
+            const address = "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2";
+            navigator.clipboard.writeText(address);
+            alert("Crypto address copied to clipboard!");
+        }
+
+        async function submitPayment() {
+            const amount = document.getElementById('fundAmount').value;
+            const method = document.getElementById('paymentMethod').value;
+            const utr = document.getElementById('utrNumber')?.value || null;
+            
+            if (!amount || amount < 100) {
+                alert("Minimum amount is ₹100");
+                return;
+            }
+            
+            if (method === 'upi' && !utr) {
+                alert("Please enter UTR number");
+                return;
+            }
+            
+            const result = await dashboard.addFunds(amount, method, utr);
+            
+            if (result.success) {
+                alert("Payment submitted! Admin will verify.");
+                closeAddFundModal();
+            } else {
+                alert("Error: " + result.error);
+            }
+        }
+
+        function copyNumber() {
+            const number = document.getElementById('virtualNumber').textContent;
+            navigator.clipboard.writeText(number.replace(/\s/g, ''));
+            alert("Number copied to clipboard!");
+        }
+
+        function showApiKey() {
+            const apiKey = dashboard.currentUser ? dashboard.currentUser.uid + '_smsprov_' + Math.random().toString(36).substr(2, 9) : 'Not available';
+            document.getElementById('apiKeyValue').textContent = apiKey;
+            document.getElementById('apiKeyModal').classList.add('show');
+        }
+
+        function closeApiKeyModal() {
+            document.getElementById('apiKeyModal').classList.remove('show');
+        }
+
+        function copyApiKey() {
+            const apiKey = document.getElementById('apiKeyValue').textContent;
+            navigator.clipboard.writeText(apiKey);
+            alert("API Key copied to clipboard!");
+        }
+
+        function logout() {
+            dashboard.logout();
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.top-menu-container')) {
+                document.getElementById('topMenuDropdown').classList.remove('show');
+            }
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        };
+    </script>
 </body>
 </html>
