@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Same head content as before -->
+</head>
+<body>
+    <!-- AUTH CHECK - Add this at the VERY TOP of body -->
+    <script>
+        // Immediate auth check
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                console.log("No user, redirecting to login...");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+    
+    <!-- Rest of your dashboard HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SMSProvider</title>
